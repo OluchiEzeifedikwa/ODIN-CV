@@ -1,10 +1,12 @@
 import { useState } from 'react';
 
 
+
 export default function EducationalExperience() {
     const[value, setValue] = useState({school:"", title:"",date:""})
     const[displayName, setDisplayName] = useState("")
-    const[isEditing, setIsEditing] = useState(false)
+    // const[cardText, setCardText] = useState("");
+    // const[isEditing, setIsEditing] = useState(false);
 
     const handleInputChange = (e) => {
         setValue({...value, [e.target.name]: e.target.value})
@@ -16,12 +18,15 @@ export default function EducationalExperience() {
         setDisplayName(`${value.school} ${value.title} ${value.date}`)
     }
 
-    const handleEditClick = () => {
-        setIsEditing(true);
-    }
+    // const handleEditClick = () => {
+    //     setIsEditing(true);
+    // }
 
-    // const handleSaveClick = () => {
-    //     setIsEditing(false);
+    // const handleButtonClick = () => {
+    //     // setCardText(value);
+    //     setDisplayName(value);
+    //     setValue("");
+        
     // }
 
 
@@ -53,28 +58,44 @@ export default function EducationalExperience() {
 
             <label htmlFor="date of study">Date Of Study:</label>
             <input 
-            type="text" 
+            type="date" 
             name="date"
             value={value.date}
             onChange={handleInputChange}
         // onChange={(event) => setValue(event.target.value)}
         />
-        <button type="submit">Save</button>
-            {isEditing ? (
+        <button onClick={handleSubmit} type="submit">Submit</button>
+
+        
+
+            {/* {/* {isEditing ? (
                 <button type='submit'onSubmit={handleSubmit}>Edit</button>
-                ) : (<button onClick={handleEditClick}>Edit</button>)}
+                ) : (<button onClick={handleEditClick}>Edit</button>)} */}
+
+                {/* {cardText && (
+                    <div className='card'>
+                        <p>{cardText}</p>
+                        {displayName}
+                    </div>
+                )} */} */
 
         
         {/* <button onClick={handleEditClick}>Edit</button> */}
         {/* <button type="submit">Submit</button> */}
         </form>
-        <div>
-            {displayName}
+        
+       
+        <div className='displayname'>
+            {displayName ? (
+                <p>School: {value.school} <br />
+                Title: {value.title} <br />
+                Date: {value.date}</p>
+            ) : (
+            <p>No data available</p>
+            )}
         </div>
-
-        
-        
+   
         </>
-    )
+ )
 
 }

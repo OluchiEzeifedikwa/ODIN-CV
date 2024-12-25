@@ -5,10 +5,11 @@ import GeneralInformation from './components/generalInformation'
 import EducationalExperience from './components/educationalexperience'
 import Clock from './components/educationalexperience'
 import PracticalExperience from './components/practicalexperience'
-import './index.css'
+import './index.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <h1>ODIN CV APPLICATION</h1>
     <GeneralInformation />
     <EducationalExperience />
     <PracticalExperience />

@@ -12,6 +12,17 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.displayname {
+  border: 2px solid white;
+  height: 100px;
+}
+
+.card {
+  border: 2px solid white;
+  background-color: red;
+  color: white;
+  
+}
 
 a {
   font-weight: 500;
