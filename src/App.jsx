@@ -1,38 +1,95 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import EducationalExperience from './components/educationalexperience'
+// import React from 'react';
+import GeneralInformation from './components/generalInformation'
+import EducationalExperience from './components/EducationalExperience'
+import PracticalExperience from './components/practicalexperience'
+import './index.css';
+import { useState } from 'react';
 
 function App() {
-  // const [count, setCount] = useState(0)
+  const [value, setValue] = useState({
+    school:"", 
+    title:"",
+    date:"",
+    name:"",
+    email:"",
+    phone:"",
+    company:"",
+    position:"",
+  });
+  
+  const[displayName, setDisplayName] = useState("")
+
+  const handleInputChange = (e) => {
+    setValue({...value, [e.target.name]: e.target.value})
+
+}
+
+const handleSubmit = (e) => {
+    e.preventDefault();
+    setDisplayName(`${value.school} ${value.title} ${value.date} ${value.name} ${value.email} ${value.phone} ${value.company} ${value.position}`)
+}
+
 
   return (
     <>
-    <div className='App'>
-    {/* <EducationalExperience /> */}
+    <div>
+      <h1>ODIN-CV</h1>
+      <form onSubmit={handleSubmit}>
+      <GeneralInformation
+      value = {value}
+      handleInputChange = {handleInputChange}
+      />
+
+
+      <EducationalExperience
+      value = {value}
+      handleInputChange = {handleInputChange}
+      />
+      
+      <PracticalExperience 
+      value = {value}
+      handleInputChange = {handleInputChange}
+      />
+      <button type='submit'>Submit</button>
+      </form>
+            {displayName ? (
+              <div className='displayname'>
+                
+                <h2>EDUCATIONAL EXPERIENCE</h2>
+                <p>School: {value.school} <br />
+                Title: {value.title} <br />
+                Date: {value.date}<br />
+                <hr />
+                <h2>GENERAL INFORMATION</h2>
+                Name: {value.name} <br />
+                Email: {value.email} <br />
+                Phone: {value.phone}<br />
+                <hr />
+                <h2>PRACTICAL EXPERIENCE</h2>
+                Company: {value.company} <br />
+                position: {value.position} <br />
+                </p>
+                </div>
+            ) : (
+            <p>No data available</p>
+          )}
     </div>
-      {/* <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
+  
+ 
+    
+    
+
+
+    {/* <h1>ODIN CV APPLICATION</h1> */}
+    {/* <GeneralInformation />
+    <EducationalExperience />
+    <PracticalExperience /> */}
+
+    
     </>
   )
-}
+};
+  
 
-export default App
+
+export default App;
